@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
       allowNull :false ,   
       defaultValue: 2    
     },
-    max_weigth :{
+    max_weight :{
       type: DataTypes.STRING,
       allowNull :false ,
       defaultValue: 2
@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
 
     },
 
-    min_weigth :{
+    min_weight :{
       type: DataTypes.STRING,
       allowNull :false ,
       defaultValue: 2
