@@ -19,11 +19,7 @@ export default function CardDog({
         Temperaments?.map((ele)=><p>{ele.name}</p>) 
       :<p>{temperament}</p>}
        
-      {/* {temperament[0]?.map((element, index) => (
-                <ol key={index}>
-                  {element}
-                </ol>
-              ))} */}
+      
       <h3>{`peso minimo: ${min_weight}KG`}</h3>
       <h3>{`peso maximo: ${max_weight}KG`}</h3>
       <img src={image} alt={`imagen de un ${name}`} width="500" height="400" />

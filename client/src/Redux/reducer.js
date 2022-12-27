@@ -2,13 +2,13 @@ const initialState = {
 
   allDogs: [],
   dogs: [],
-  temperaments:[],
+  temperaments: [],
 }
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_DOG":
-      
+
       return {
         ...state,
         allDogs: action.payload,
@@ -47,18 +47,33 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: orderArr,
       };
-       
-      case "GET_TEMPERAMENTS":
-        return {
+
+    case "GET_TEMPERAMENTS":
+      return {
+        ...state,
+        temperaments: action.payload
+      }
+
+    case "FILTER_DOGS_BY_TEMPERAMENT":
+      const dogTemperament = state.allDogs.filter((dog) =>
+        dog.temperament?.includes(action.payload) ? dog : null
+          
+      );
+      
+      return {
+
+        ...state,
+        dogs:
+          action.payload === "AllTemperaments" ? state.allDogs : dogTemperament,
+        };
+
+       case "POST_DOGS":
+        return{
           ...state,
-        temperaments:action.payload
         }
 
-        // case "FLITRAR":
-        //   return{
-        //     ...state,
-        //     dogs : filtro,
-        //   }
+
+
 
 
     default: return {

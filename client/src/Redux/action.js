@@ -53,9 +53,18 @@ export function getTemperaments(){
     }
 }
 
-export function filtro (payload){
+
+export function getDogsByTemperament(payload) {
     return {
-        type: "FLITRAR",
-        payload,
-    }
-}
+      type: "FILTER_DOGS_BY_TEMPERAMENT",
+      payload,
+    };
+  }
+
+  export function PostCreateDog(payload) {
+    return async function (dispatch) {
+      const data = axios.post("http://localhost:3001/dogs", payload);
+      
+      return data;
+    };
+  }

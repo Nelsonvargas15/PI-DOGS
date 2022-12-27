@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { getDogs , getTemperaments, orderName } from '../../Redux/action';
+import { getDogs , getTemperaments, orderName  ,  getDogsByTemperament} from '../../Redux/action';
 import { Link } from "react-router-dom"
 import CardDog from '../CardDog/CardDog';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginated from '../Paginated/Paginated';
-
+import CreateDogs from '../CreateDogs/CreateDogs';
 import "../Home/Home.css"
+
 
 
 
@@ -42,9 +43,14 @@ export default function Home() {
         dispatch(orderName(evento.target.value));
     }
      
-    function handleClickTemperaments(evento){
+    // {function handleClickTemperaments(evento){
+    //     evento.preventDefault();
+    //     dispatch(getTemperaments(evento.target.value));
+    // }}
+
+    function handleFilteredByTemperaments(evento){
         evento.preventDefault();
-        dispatch(orderName(evento.target.value));
+        dispatch( getDogsByTemperament(evento.target.value));
     }
 
     
@@ -52,6 +58,7 @@ export default function Home() {
    
     return (
         <div>
+            {console.log(allDogs)}
             <Link to="/dogs"> Crear perros</Link>
             <button onClick={evento => { handleClick(evento) }}> Recargar perros </button>
             <SearchBar />
@@ -59,15 +66,16 @@ export default function Home() {
                 <select onChange={(evento)=>{handleClickOrderName(evento)}}>
                     <option value="asc">A - Z</option>
                     <option value="des">Z - A</option>
+              </select>
+               
+                 
+                 <select onChange={(ele) => handleFilteredByTemperaments(ele) }>
                     
-                </select>
-                <select>
-                    
-                {temperaments?.map((elemento) => <option value= {elemento.name}>{elemento.name}</option>)}
-
-                </select>
+                {temperaments?.map((elemento) => <option value = {elemento.name} >{elemento.name}</option>)}
+                  
+                </select> 
                 <Paginated
-                    allDogs={allDogs.length}
+                    allDogs= {allDogs.length}
                     dogPerPage = {dogPerPage}
                     paginado = {paginado}
 
@@ -84,9 +92,10 @@ export default function Home() {
                                 min_weight={dog.min_weight}
                                 max_weight={dog.max_weight}
                             />
+                            
 
                         </div>
-
+                      
 
                     )
                 })}
