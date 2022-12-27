@@ -5,7 +5,7 @@ const { getDbInfo } = require("./Db_info")
 const getAllInfo = async () => {
     const apiInfo = await getApiInfo()
     const dbInfo = await getDbInfo()
-    const infoTotal = apiInfo.concat(dbInfo)
+     const infoTotal = apiInfo.concat(dbInfo)
     return infoTotal
 }
 
