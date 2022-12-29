@@ -61,10 +61,41 @@ export function getDogsByTemperament(payload) {
     };
   }
 
-  export function PostCreateDog(payload) {
-    return async function (dispatch) {
-      const data = axios.post("http://localhost:3001/dogs", payload);
+  export function postCreateDog(payload) {
+    console.log(payload)
+    return async function () {
+      const data = await axios.post("http://localhost:3001/dogs", payload);
       
       return data;
     };
   }
+
+  export const getDogById = (id) => {
+    return async (dispatch) => {
+      let data = await axios.get(`http://localhost:3001/dogs/${id}`);
+      return dispatch({ type: "DOG_DETAIL", payload: data.data });
+    };
+  };
+
+  export const  emptyDetail = () => {
+    return {
+      type :"EMPTY_DETAIL",
+      payload:[],
+    }
+  }
+ 
+  export const ChangePage =(payload) => {
+      return{
+        type:"CHANGE_PAGE",
+        payload: payload ++,
+      }
+  }
+  export function filterCreated(payload) {
+    // nuestro payload sera la opcion que elijamos
+    // dependiendo del payload
+    return {
+      type: "FILTER_DOG_CREATED",
+      payload,
+    };
+  }
+

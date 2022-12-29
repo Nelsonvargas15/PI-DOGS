@@ -3,6 +3,8 @@ const initialState = {
   allDogs: [],
   dogs: [],
   temperaments: [],
+  dogId :[],
+  currentPage : 1 
 }
 
 function rootReducer(state = initialState, action) {
@@ -72,8 +74,30 @@ function rootReducer(state = initialState, action) {
           ...state,
         }
 
+       case "EMPTY_DETAIL":      
+        case "DOG_DETAIL":
+          return {
+            ...state,
+            dogId: action.payload,
+          };
+
+          case "CHANGE_PAGE":
+            return{
+              ...state,
+              currentPage: action.payload,
+            }
 
 
+            case "FILTER_DOG_CREATED":
+      const createdFilter =
+        action.payload === "Created"
+          ? state.allDogs.filter((ele) => ele.createInDb)
+          : state.allDogs.filter((ele) => !ele.createInDb);
+
+      return {
+        ...state,
+        dogs: createdFilter,
+      };
 
 
     default: return {

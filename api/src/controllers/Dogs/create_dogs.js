@@ -9,7 +9,6 @@ const dogCreate = async (objDog) => {
           max_weight,
           life_span,
           image, 
-          createInDb,
           Temperaments } = objDog;
       const dog = {
           name,
@@ -19,15 +18,16 @@ const dogCreate = async (objDog) => {
           max_weight,
           life_span,
           image, 
-          createInDb,
-          Temperaments
+          
+          
       }
-
+  
       const temInfo = await Temperament.findAll({
           where: {
               name: Temperaments,
           }
       })
+      
       const createdog = await Dog.create(dog)
 
       createdog.addTemperament(temInfo)

@@ -1,26 +1,62 @@
-import React from 'react'
-import "../Paginated/Paginated.css"
+import React from "react";
+import * as actions from "../../Redux/action";
+import { useSelector, useDispatch } from "react-redux";
+import "./pagination.modules.css"
 
-export default function Paginated({dogPerPage , allDogs , paginado} ) {
-    const pageNumber = [];
 
-    for (let i = 1; i <= Math.ceil(allDogs / dogPerPage); i++) {
-        // lo que hara esta logica, es darnos el numero de paginas que tendremos en nuestro array
-        pageNumber.push(i);
-      }
+  export const Paginated = (props) => {
+  const {allDogs, dogPerPage, currentPage } = props;
+  const dispatch = useDispatch();
 
+  
+  let pages = [];
+  for (let i = 1; i <= Math.ceil(allDogs / dogPerPage); i++) {
+    pages.push(i);
+  }
 
   return (
-    <nav>
-     <ul className="paginado">
-        {pageNumber?.map((number) => {
-          return (
-            <li className="number" key={number}>
-              <button onClick={() => paginado(number)}>{number}</button>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  )
-}
+    <div className="pagination">
+      {currentPage !== 1 ? (
+        <>
+          <button
+            onClick={() => dispatch(actions.ChangePage(currentPage - 1))}
+          >
+            {"<"}
+          </button>
+          <button
+            onClick={() => dispatch(actions.ChangePage(currentPage - 1))}
+          >
+            {currentPage - 1}
+          </button>
+        </>
+      ) : (
+        <>
+          <button disable>{"<"}</button>
+          
+        </>
+      )}
+
+      <button className="active">{currentPage}</button>
+
+      {currentPage !== pages[pages.length - 1] ? (
+        <>
+          <button
+            onClick={() => dispatch(actions.ChangePage(currentPage + 1))}
+          >
+            {currentPage + 1}
+          </button>
+          <button
+            onClick={() => dispatch(actions.ChangePage(currentPage + 1))}
+          >
+            {">"}
+          </button>
+        </>
+      ) : (
+        <>
+          
+          <button disabled>{">"}</button>
+        </>
+      )}
+    </div>
+  );
+};

@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { getAllInfo } = require("../controllers/Dogs/All_info")
-const { Dog , Temperament } = require("../db")
+const { Dog, Temperament } = require("../db")
 
 
 
@@ -26,19 +26,23 @@ router.get("/", async (req, res) => {
    }
 });
 
-router.get("/:id", async( req , res ) => {
+router.get("/:id", async (req, res) => {
    const id = req.params.id
    try {
-       const dogId = await getAllInfo()
-       if(id){
-           const filterDogById = await dogId.filter(dog => dog.id === parseInt(id))
-           if(filterDogById.length)res.status(200).send(filterDogById)
-           else throw("no existe el perro")
-          
-       }
-   } 
+      const dogId = await getAllInfo()
+      if (id) {
+         const filterDogById = await dogId.filter(dog => dog.id == id)
+         console.log(filterDogById)
+         if (filterDogById.length) {
+            res.status(200).send(filterDogById)
+         }
+         else {
+            throw ("no existe el perro")
+         }
+      }
+   }
    catch (error) {
-       res.status(404).send(error)
+      res.status(404).send(error)
    }
 })
 

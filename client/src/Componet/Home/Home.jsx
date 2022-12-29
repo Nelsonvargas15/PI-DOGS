@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import { getDogs , getTemperaments, orderName  ,  getDogsByTemperament} from '../../Redux/action';
+import { getDogs , getTemperaments, orderName  ,  getDogsByTemperament , filterCreated , ChangePage} from '../../Redux/action';
 import { Link } from "react-router-dom"
 import CardDog from '../CardDog/CardDog';
 import SearchBar from '../SearchBar/SearchBar';
-import Paginated from '../Paginated/Paginated';
+import {Paginated} from "../Paginated/Paginated";
 import CreateDogs from '../CreateDogs/CreateDogs';
 import "../Home/Home.css"
 
@@ -18,25 +18,23 @@ export default function Home() {
     const dispatch = useDispatch()
     const allDogs = useSelector(state => state.dogs)
     const temperaments = useSelector(state => state.temperaments)
-    const [currentPage, setCurrentpage] = useState(1);
+    const currentPage = useSelector(state => state.currentPage)
     const [dogPerPage, setDogPage] = useState(8);
     const indexOfLastDogs = currentPage * dogPerPage
     const indexOfFirstDogs = indexOfLastDogs - dogPerPage
     const currentDogs = allDogs.slice(indexOfFirstDogs, indexOfLastDogs)
 
-    const paginado = (pageNumber) => {
-        setCurrentpage(pageNumber)
-    }
+   
 
     useEffect(() => {
         dispatch(getDogs())
          dispatch(getTemperaments())
     }, [])
 
-    function handleClick(evento) {
-        evento.preventDefault();
-        dispatch(getDogs());
-    }
+    // function handleClick(evento) {
+    //     evento.preventDefault();
+    //     dispatch(getDogs());
+    // }
 
     function handleClickOrderName(evento){
         evento.preventDefault();
@@ -51,16 +49,23 @@ export default function Home() {
     function handleFilteredByTemperaments(evento){
         evento.preventDefault();
         dispatch( getDogsByTemperament(evento.target.value));
+        dispatch(ChangePage(1))
+        
     }
+
+    const handleClickFilterCreated = (e) => {
+        e.preventDefault();
+        dispatch(filterCreated(e.target.value));
+      };
 
     
   
    
     return (
         <div>
-            {console.log(allDogs)}
+            
             <Link to="/dogs"> Crear perros</Link>
-            <button onClick={evento => { handleClick(evento) }}> Recargar perros </button>
+            <button onClick={()=> window.location.reload()}>Recarga</button>
             <SearchBar />
             <div>
                 <select onChange={(evento)=>{handleClickOrderName(evento)}}>
@@ -73,11 +78,16 @@ export default function Home() {
                     
                 {temperaments?.map((elemento) => <option value = {elemento.name} >{elemento.name}</option>)}
                   
-                </select> 
+                </select>
+
+                <div>
+                    
+                </div>
+
                 <Paginated
                     allDogs= {allDogs.length}
                     dogPerPage = {dogPerPage}
-                    paginado = {paginado}
+                    currentPage = {currentPage}
 
                 />
                 {currentDogs?.map((dog) => {
@@ -85,6 +95,7 @@ export default function Home() {
                     return (
                         <div className='Cards'>
                             <CardDog 
+                                 id={dog.id}
                                 name={dog.name}
                                 image={dog.image}
                                 temperament={dog.temperament}
