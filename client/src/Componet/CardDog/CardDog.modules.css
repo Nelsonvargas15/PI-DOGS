@@ -1,0 +1,67 @@
+
+
+.Card{
+    width: 435px;
+    height: 540px;
+    border-radius: 20px ;
+    box-shadow: 0 0 20px rgb(92, 87, 73);
+    backdrop-filter: blur(20px);
+    margin: 15px;
+    transition: 500ms ease-in-out;
+    border-radius: 15px ,0px ,0px ,15px;
+   
+    
+}
+
+
+   
+
+
+.linkCard{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.linkCard:hover{
+    color: #343A40;
+    transition: 0.5s;
+}
+
+.img{
+    width: 320px; 
+    height: 285px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    border-radius: 15px 0px 0px 15px;
+   
+}
+.nameDog{
+    font:  cursive;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: white;
+	margin-right: 20px;
+}
+
+
+h3{
+    font:  cursive;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: white;
+    
+	}
+
+    
+    
+    
+/* p{
+    font:  cursive;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	
+	color: white;
+	margin-right: 20px;
+} */
+
+

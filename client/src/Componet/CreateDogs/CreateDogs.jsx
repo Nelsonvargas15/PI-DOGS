@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory , Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, postCreateDog } from "../../Redux/action"
 import validate from "./Error/Errors";
 import Form from './Form/Form';
+import "./Form/Form.modules.css"
 
 
 
@@ -82,10 +83,10 @@ export default function CreateDogs() {
 
   return (
 
-    <div className='background'>{
+    <div  className='contenedor'>{
       !loading ?
-        <div>
-          <NavLink to='/home'><button>Back</button></NavLink>
+        <div >
+        <Link to='/home'><button className='boton' >Back</button></Link>
           <div>
             <Form
               handleSumbit={handleSumbit}

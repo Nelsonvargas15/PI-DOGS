@@ -1,0 +1,162 @@
+
+.Container {
+    background-color: rgba(171, 173, 174, 0.493);
+    border: 25px solid rgba(8, 10, 4, 0.51);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    box-shadow: 40px 40px 40px rgba(0, 0, 0, 0.303);
+    font-family: "Sniglet", cursive;
+    text-align: center;
+    width: 100%;
+   
+    margin-right: 100px;
+    
+    /* border: 2px solid black; */
+}
+
+.Description {
+    text-align: left;
+    position: relative;
+    left: 40px;
+}
+
+
+.Description label {
+    font:  cursive;
+	text-shadow: -1px 0 rgb(239, 229, 229), 0 1px rgb(241, 238, 238), 1px 0 rgb(232, 228, 228), 0 -1px rgb(242, 235, 235);
+	color: rgb(21, 21, 21);
+	margin-right: 20px;
+}
+
+
+.CreateButton{
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+   
+    border: 1px solid black;
+    box-shadow: 5px 5px 0 black,
+        -5px -5px 0 black,
+        -5px 5px 0 black,
+        5px -5px 0 black;
+    transition: 500ms ease-in-out;
+    margin-block-end: 10px;
+}
+
+
+.CreateButton:hover {
+    background-color: rgb(123, 120, 118);
+    transition: 0.5s;
+    transform: translateY(-2px)
+}
+
+
+
+.Description input{
+    font-family: inherit;
+   width: 90%;
+  
+   
+    border-bottom: 2px solid rgb(20, 20, 20);
+    font-size: 1rem;
+    color: rgb(71, 69, 68);
+    background: white;
+    transition: border-color 0.2s;
+    align-items: center;
+    margin: 20px;
+
+}
+
+.Description input:focus{
+    padding-bottom: 6px;  
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #45443f,#191111);
+    border-image-slice: 1;
+}
+
+
+.select{
+    background: linear-gradient(to bottom right, #efebe9, #514b47);
+    border: 0;
+    border-radius: 12px;
+    color: #050505;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.select:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(95, 84, 77, 0.5);
+  }
+  
+  .select option{
+    background-color: #5b5653;
+    border-radius: 15px;
+  
+  }
+  .select::-webkit-scrollbar {
+    background-color: rgb(18, 17, 16);             
+  }
+  
+
+  .templist{
+    background-color: rgb(126, 126, 126);
+    border-radius: 14px;
+    padding: 1%;
+       
+    
+  }
+
+  form{
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+
+  .boton{
+    
+    width: 85px;
+    height: 50px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 10px;
+    border: 2px solid rgb(16, 15, 15);
+    border-radius: 1px;
+    color: rgb(19, 19, 19);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 25px rgb(105 104 104);
+    border-radius: 15px;
+    margin: 10px;
+    margin-left: 65px;
+}
+  
+
+  
+h2{
+    font:  cursive;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	color: white;    
+
+}

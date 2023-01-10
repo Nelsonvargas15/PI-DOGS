@@ -1,8 +1,8 @@
 import React from 'react'
-import { getNameDogs } from "../../Redux/action"
+import { getNameDogs  , ChangePage} from "../../Redux/action"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-
+import "../SearchBar/SearchBar.modules.css"
 
 
 export default function SearchBar() {
@@ -12,6 +12,7 @@ const [dogsState, setName] = useState('')
 
 function handelClick(evento){
   evento.preventDefault()
+  dispatch(ChangePage(1))
 
   if(dogsState.length){
   dispatch(getNameDogs(dogsState));
@@ -23,7 +24,7 @@ function handelClick(evento){
 
   return (
     <div className='searchBar'>
-      <input 
+      <input className='InputPricipal'
       type="text"
       placeholder='Buscar Perros'
       value={dogsState}
@@ -33,7 +34,7 @@ function handelClick(evento){
       
       
       />
-      <button type='submit' onClick={handelClick}>Buscar</button>
+      <button  className='buttonBuscador' type='submit' onClick={handelClick}>Buscar</button>
     </div>
   )
 }

@@ -9,7 +9,9 @@ const dogCreate = async (objDog) => {
           max_weight,
           life_span,
           image, 
-          Temperaments } = objDog;
+          Temperaments,
+          createdb 
+        } = objDog;
       const dog = {
           name,
           min_height,
@@ -18,7 +20,7 @@ const dogCreate = async (objDog) => {
           max_weight,
           life_span,
           image, 
-          
+          createdb
           
       }
   

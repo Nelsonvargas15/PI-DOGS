@@ -1,5 +1,7 @@
 import React from 'react'
 import { useSelector } from "react-redux";
+import "./Form.modules.css"
+import { Link } from 'react-router-dom';
 
 export default function Form({
 
@@ -8,16 +10,19 @@ export default function Form({
   handleSelect,
   handleTempDelete,
   input,
-  errors
+  errors,
+  key
 
 }) {
 
   const Temperaments = useSelector(state => state.temperaments)
 
   return (
-    <div>
+    <div className='Container'>
+        
       <form onSubmit={(e) => handleSumbit(e)}>
-        <div>
+        <div className=' Description'>
+        <div >
           <label>Name: </label>
           <input type="text" value={input.name} name="name" onChange={(e) => handleChange(e)} />
           {errors.name ? (<span>{errors.name}</span>) : <span></span>}
@@ -51,8 +56,9 @@ export default function Form({
           <input type="text" value={input.image} name="image" onChange={(e) => handleChange(e)} />
         </div>
         <div>
+       
           <label>Temperament: </label>
-          <select onChange={(e) => handleSelect(e)}>
+          <select className='select' onChange={(e) => handleSelect(e)}>
             {
               Temperaments.map((temp) => (
                 <option value={temp.name}>{temp.name}</option>
@@ -61,8 +67,9 @@ export default function Form({
           </select>
           {errors.Temperaments && (<p>{errors.Temperaments}</p>)}
         </div>
-        <ul><li>{input.Temperaments.map(temp => temp + ', ')}</li></ul>
-        <button type="submit" disabled={
+        </div>
+        <ul className='templist'><p>{input.Temperaments.map(temp => temp + ', ')}</p></ul>
+        <button className='CreateButton' type="submit" disabled={
           !input.name ||
           !input.min_height ||
           !input.max_height ||

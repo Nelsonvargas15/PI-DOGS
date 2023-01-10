@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 1rem;
+    margin: 10px;
 }
 
 .pagination button {
@@ -27,6 +28,15 @@
     background: rgba(0, 0, 0, 0.921);
     color: white;
 }
+
+.pagination button:hover{
+  background-color: rgb(123, 120, 118);
+  transition: 0.5s;
+}
+
+
+
+
 @media (max-width: 600px) {
     .pagination button {
       width: 30px;
